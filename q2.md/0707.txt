@@ -1,0 +1,50 @@
+1 class Solution(object):
+    def getConcatenation(self, nums):
+        return nums + nums
+
+2 class Solution(object):
+    def shuffle(self, nums, n):
+        res = []
+        for i in range(n):
+            res.append(nums[i])
+            res.append(nums[i + n])
+        return res
+3 class Solution(object):
+    def findMaxConsecutiveOnes(self, nums):
+        max_len = 0
+        current = 0
+        for num in nums:
+            if num == 1:
+                current += 1
+                if current > max_len:
+                    max_len = current
+            else:
+                current = 0
+        return max_len
+4 class Solution(object):
+    def findErrorNums(self, nums):
+        n = len(nums)
+        s = set(nums)
+        dup = sum(nums) - sum(s)
+        miss = n * (n + 1) // 2 - sum(s)
+        return [dup, miss]
+5 class Solution(object):
+    def smallerNumbersThanCurrent(self, nums):
+        res = []
+        n = len(nums)
+        for i in range(n):
+            count = 0
+            for j in range(n):
+                if i != j and nums[j] < nums[i]:
+                    count += 1
+            res.append(count)
+        return res
+6 class Solution(object):
+    def findDisappearedNumbers(self, nums):
+        n = len(nums)
+        s = set(nums)
+        res = []
+        for i in range(1, n + 1):
+            if i not in s:
+                res.append(i)
+        return res
